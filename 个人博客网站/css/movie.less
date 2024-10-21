@@ -1,0 +1,739 @@
+// 设置电影第一个容器 开启grid布局 
+.movie_grid {
+    // border: 1px solid #333;
+    width: 373px;
+    height: 100%;
+    margin-top: 10px;
+    display: grid;
+    place-items: center;
+    // position: relative;
+    
+    h2 {
+        font-weight: 200;
+        font-family: 'Helvetica';
+        // position: absolute;
+        font-size: 15px;
+        // top: 0px;
+        color: #333;
+        left: 0px;
+        bottom: 0px;
+    }
+
+    .movie_grid_2 {
+        // border: 1px solid green;
+        width: 373px;
+        height: 260px;
+        // margin-top: 10px;
+        display: grid;
+        place-items: center;
+        overflow-x: scroll; //允许水平滚动
+        scroll-snap-type: x mandatory;
+        white-space: nowrap;
+
+        // 美剧
+        .movie_breaking_bad {
+            width: 780px;
+            height: 210px;
+            // border: 1px solid green;
+            display: flex;
+            justify-content: space-around;
+            position: relative;
+
+            // 电影名字 
+            .name_breaking_bad {
+                // border: 1px solid;
+                font-weight: 200;
+                font-family: 'Helvetica';
+                position: absolute;
+                font-size: 20px;
+                top: -23px;
+                color: #333;
+                left: 0px;
+            }
+
+            // 第一季
+            .movie_breaking_bad_1 {
+                // border: 1px solid;
+                position: relative;
+                animation: start 2s;
+                transition: all 1s;
+
+                // 电影封面
+                .breaking_bad_1 {
+                    background-image: url(../log/movie_spirit.png);
+                    background-size: 865px;
+                    background-position: 0px 0px;
+                    background-repeat: no-repeat;
+                    width: 130px;
+                    height: 207px;
+                    border: 1px solid #dbdcdd;
+                    border-radius: 5px;
+                    // position: relative;
+                    transition: all 1s;
+                    cursor: pointer;
+                }
+
+                // 设置集数
+                .season_1 {
+                    // 不知道有什么用，我自己写的都忘记有什么用了
+                    border-radius: 0px 0px 5px 5px;
+                    position: absolute;
+                    background-color: rgba(255, 255, 255, 0.933);
+                    width: 130px;
+                    height: 100px;
+                    bottom: 10px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    place-items: center;
+                    // z-index: -1;
+                    transition: all 1s;
+                    border: 1px solid #dbdcdd;
+                    border-top: none;
+                    z-index: -1;
+                    left: 0px;
+
+                    ul {
+                        // border: 1px solid red;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+                        width: 130px;
+                        height: 100px;
+                        place-items: center;
+
+                        li {
+                            margin-top: 5px;
+                            border: 1px solid #dbdcdd;
+                            width: 30px;
+                            height: 15px;
+                            line-height: 15px;
+                            border-radius: 3px;
+
+                            a {
+                                text-decoration: none;
+                                // border: 1px solid;
+                                text-align: center;
+                                color: #333;
+                                display: block;
+                                border-radius: 3px;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            // 第一季的动画
+            .movie_breaking_bad_1:hover {
+                transform: translateY(-85px);
+                transition: all 1s;
+            }
+
+            .movie_breaking_bad_1:hover .season_1 {
+                transform: translateY(110px);
+                transition: all 1s;
+            }
+
+
+            // 设置第二季
+            .movie_breaking_bad_2 {
+                // border: 1px solid;
+                position: relative;
+                animation: start 2.2s;
+                transition: all 1s;
+
+
+                .breaking_bad_2 {
+                    background-image: url(../log/movie_spirit.png);
+                    background-size: 865px;
+                    background-position: -155px 0px;
+                    background-repeat: no-repeat;
+                    width: 130px;
+                    height: 207px;
+                    border: 1px solid #dbdcdd;
+                    border-radius: 5px;
+                    position: relative;
+                    transition: all 1s;
+                }
+
+                // 设置集数
+                .season_2 {
+                    // border: 1px solid #dbdcdd;
+                    border-radius: 0px 0px 5px 5px;
+                    position: absolute;
+                    background-color: rgba(255, 255, 255, 0.933);
+                    width: 130px;
+                    height: 120px;
+                    bottom: 0px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    place-items: center;
+                    z-index: -1;
+                    transition: all 1s;
+                    border: 1px solid #dbdcdd;
+                    top: 85px;
+
+                    ul {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+                        width: 130px;
+                        height: 100px;
+                        place-items: center;
+
+                        li {
+                            margin-top: 5px;
+                            border: 1px solid #dbdcdd;
+                            width: 30px;
+                            // height: 15px;
+                            line-height: 15px;
+                            border-radius: 3px;
+
+                            a {
+                                text-decoration: none;
+                                // border: 1px solid;
+                                text-align: center;
+                                color: #333;
+                                display: block;
+                                border-radius: 3px;
+                            }
+                        }
+                    }
+                }
+
+                // // 第二季的动画
+                // .breaking_bad_2:hover {
+                //     transform: translateY(-100px);
+                //     transition: all 1s;
+                // }
+
+                // .breaking_bad_2:hover+.season_2 {
+                //     transform: translateY(20px);
+                //     transition: all 1s;
+                // }
+            }
+
+            // 第二季的动画
+            .movie_breaking_bad_2:hover {
+                transform: translateY(-100px);
+                transition: all 1s;
+            }
+
+            .movie_breaking_bad_2:hover .season_2 {
+                transform: translateY(110px);
+                transition: all 1s;
+            }
+
+            // 第三季
+            .movie_breaking_bad_3 {
+                // border: 1px solid red;
+                position: relative;
+                animation: start 2.4s;
+                transition: all 1s;
+
+                .breaking_bad_3 {
+                    background-image: url(../log/movie_spirit.png);
+                    background-size: 865px;
+                    background-position: -310px 0px;
+                    background-repeat: no-repeat;
+                    width: 130px;
+                    height: 207px;
+                    // border: 1px solid #dbdcdd;
+                    border-radius: 5px;
+                    position: relative;
+                    transition: all 1s;
+                }
+
+                // 设置集数
+                .season_3 {
+                    // border: 1px solid #dbdcdd;
+                    border-radius: 0px 0px 5px 5px;
+                    position: absolute;
+                    background-color: rgba(255, 255, 255, 0.933);
+                    width: 128px;
+                    height: 120px;
+                    bottom: 0px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    place-items: center;
+                    z-index: -1;
+                    transition: all 1s;
+                    border: 1px solid #dbdcdd;
+                    top: 85px;
+
+                    ul {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+                        width: 130px;
+                        height: 100px;
+                        place-items: center;
+
+                        li {
+                            margin-top: 5px;
+                            border: 1px solid #dbdcdd;
+                            width: 30px;
+                            // height: 15px;
+                            line-height: 15px;
+                            border-radius: 3px;
+
+                            a {
+                                text-decoration: none;
+                                // border: 1px solid;
+                                text-align: center;
+                                color: #333;
+                                display: block;
+                                border-radius: 3px;
+                            }
+                        }
+                    }
+                }
+
+                // // 第三季的动画
+                // .breaking_bad_3:hover {
+                //     transform: translateY(-100px);
+                //     transition: all 1s;
+                // }
+
+                // .breaking_bad_3:hover+.season_3 {
+                //     transform: translateY(20px);
+                //     transition: all 1s;
+                // }
+            }
+
+            // 第三季的动画
+            .movie_breaking_bad_3:hover {
+                transform: translateY(-100px);
+                transition: all 1s;
+            }
+
+            .movie_breaking_bad_3:hover .season_3 {
+                transform: translateY(110px);
+                transition: all 1s;
+            }
+
+            // 第四季
+            .movie_breaking_bad_4 {
+                // border: 1px solid;
+                position: relative;
+                animation: start 2.6s;
+                transition: all 1s;
+
+                .breaking_bad_4 {
+                    background-image: url(../log/movie_spirit.png);
+                    background-size: 865px;
+                    background-position: -480px 0.5px;
+                    background-repeat: no-repeat;
+                    width: 130px;
+                    height: 207px;
+                    border: 1px solid #dbdcdd;
+                    border-radius: 5px;
+                    position: relative;
+                    transition: all 1s;
+                }
+
+                // 设置集数
+                .season_4 {
+                    // border: 1px solid #dbdcdd;
+                    border-radius: 0px 0px 5px 5px;
+                    position: absolute;
+                    background-color: rgba(255, 255, 255, 0.933);
+                    width: 130px;
+                    height: 120px;
+                    bottom: 0px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    place-items: center;
+                    // right: 0px;
+                    z-index: -1;
+                    border: 1px solid #dbdcdd;
+                    transition: all 1s;
+                    top: 85px;
+
+                    ul {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+                        width: 130px;
+                        height: 100px;
+                        place-items: center;
+
+                        li {
+                            margin-top: 5px;
+                            border: 1px solid #dbdcdd;
+                            width: 30px;
+                            // height: 15px;
+                            line-height: 15px;
+                            border-radius: 3px;
+
+                            a {
+                                text-decoration: none;
+                                // border: 1px solid;
+                                text-align: center;
+                                color: #333;
+                                display: block;
+                                border-radius: 3px;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            // 第四季的动画
+            .movie_breaking_bad_4:hover {
+                transform: translateY(-100px);
+                transition: all 1s;
+            }
+
+            .movie_breaking_bad_4:hover .season_4 {
+                transform: translateY(110px);
+                transition: all 1s;
+            }
+
+            // 第五季
+            .movie_breaking_bad_5 {
+                position: relative;
+                // border: 1px solid;
+                animation: start 2.8s;
+                transition: all 1s;
+
+                .breaking_bad_5 {
+                    background-image: url(../log/movie_spirit.png);
+                    background-size: 865px;
+                    background-position: -640px 0.5px;
+                    background-repeat: no-repeat;
+                    width: 130px;
+                    height: 207px;
+                    border: 1px solid #dbdcdd;
+                    border-radius: 5px;
+                    position: relative;
+                    transition: all 1s;
+                }
+
+                // 设置集数
+                .season_5 {
+                    // border: 1px solid #dbdcdd;
+                    border-radius: 0px 0px 5px 5px;
+                    position: absolute;
+                    background-color: rgba(255, 255, 255, 0.933);
+                    width: 130px;
+                    height: 135px;
+                    bottom: 0px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    place-items: center;
+                    z-index: -1;
+                    transition: all 1s;
+                    border: 1px solid #dbdcdd;
+                    top: 72px;
+
+                    ul {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+                        width: 130px;
+                        height: 130px;
+                        place-items: center;
+
+                        li {
+                            margin-top: 5px;
+                            border: 1px solid #dbdcdd;
+                            width: 30px;
+                            // height: 15px;
+                            line-height: 15px;
+                            border-radius: 3px;
+
+                            a {
+                                text-decoration: none;
+                                // border: 1px solid;
+                                text-align: center;
+                                color: #333;
+                                display: block;
+                                border-radius: 3px;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            // 第五季的动画
+            .movie_breaking_bad_5:hover {
+                transform: translateY(-120px);
+                transition: all 1s;
+            }
+
+            .movie_breaking_bad_5:hover .season_5 {
+                transform: translateY(130px);
+                transition: all 1s;
+            }
+
+            // 设置开始动画
+            @keyframes start {
+                0% {
+                    transform: translateX(600px);
+                }
+
+                100% {
+                    transform: scale(1.1); //变大1.1倍
+                }
+            }
+        }
+    }
+
+
+    // 第二部电影框
+    .movie_grid_3 {
+        // border: 1px solid red;
+        width: 373px;
+        height: 230px;
+        position: relative;
+        margin-top: 15px;
+        display: grid;
+        place-items: center;
+
+        // 电影名字
+        h2 {
+            font-weight: 200;
+            font-family: 'Helvetica';
+            position: absolute;
+            font-size: 20px;
+            top: -23px;
+            color: #333;
+            left: 0px;
+        }
+
+        // 设置星际穿越
+        .movie_interstellar {
+            // border: 1px solid red;
+            display: flex;
+            justify-content: center;
+            // margin-top: 20px;
+            transition: all 1s;
+            width: 130px;
+
+            // 星际穿越的容器
+            .interstellar_box {
+                // border: 1px solid red;
+                // height: 210px;
+                position: relative;
+
+
+                // 电影封面
+                .interstellar {
+                    border: 1px solid #dbdcdd;
+                    width: 130px;
+                    height: 207px;
+                    border-radius: 5px;
+                    background-image: url(../log/movie_spirit.png);
+                    background-size: 865px;
+                    background-position: 0px -216px;
+                    background-repeat: no-repeat;
+                    transition: all 1s;
+                }
+
+                // 第一季
+                .season_1 {
+                    border-radius: 0px 0px 5px 5px;
+                    position: absolute;
+                    background-color: rgba(255, 255, 255, 0.933);
+                    width: 130px;
+                    height: 100px;
+                    bottom: 10px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    place-items: center;
+                    transition: all 1s;
+                    border: 1px solid #dbdcdd;
+                    border-top: none;
+                    z-index: -1;
+                    left: 0px;
+
+                    li {
+                        margin-top: 5px;
+                        border: 1px solid #dbdcdd;
+                        width: 30px;
+                        // height: 15px;
+                        line-height: 15px;
+                        border-radius: 3px;
+
+                        a {
+                            text-decoration: none;
+                            // border: 1px solid;
+                            text-align: center;
+                            color: #333;
+                            display: block;
+                            border-radius: 3px;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        // 很奇怪，在星际穿越这里我没有改变这个HTML结构  只是改变了css也可以
+        .movie_interstellar:hover {
+            transform: translateY(-90px);
+            transition: all 1s;
+        }
+
+        .movie_interstellar:hover .season_1 {
+            transform: translateY(110px);
+            transition: all 1s;
+        }
+    }
+
+    // 设置我不是药神
+    .movie_grid_4 {
+        // border: 1px solid red;
+        width: 373px;
+        height: 230px;
+        position: relative;
+        margin-top: 15px;
+        display: grid;
+        place-items: center;
+
+
+        h2 {
+            font-weight: 200;
+            font-family: 'Helvetica';
+            position: absolute;
+            font-size: 20px;
+            top: -23px;
+            color: #333;
+            left: 0px;
+        }
+
+        .movie_not_yaoshen {
+            // border: 1px solid #333;
+            display: flex;
+            justify-content: center;
+            transition: all 1s;
+            width: 130px;
+
+
+            .yaoshen_box {
+                // border: 1px solid red;
+                // height: 210px;
+                position: relative;
+
+                .yaoshen {
+                    border: 1px solid #dbdcdd;
+                    width: 130px;
+                    height: 207px;
+                    border-radius: 5px;
+                    background-image: url(../log/movie_spirit.png);
+                    background-size: 865px;
+                    background-position: -165px -216px;
+                    background-repeat: no-repeat;
+                    transition: all 1s;
+                }
+
+                .season_1 {
+                    border-radius: 0px 0px 5px 5px;
+                    position: absolute;
+                    background-color: rgba(255, 255, 255, 0.933);
+                    width: 130px;
+                    height: 100px;
+                    bottom: 0px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    place-items: center;
+                    transition: all 1s;
+                    border: 1px solid #dbdcdd;
+                    border-top: none;
+                    z-index: -1;
+                    left: 0px;
+
+                    li {
+                        margin-top: 5px;
+                        border: 1px solid #dbdcdd;
+                        width: 30px;
+                        // height: 15px;
+                        line-height: 15px;
+                        border-radius: 3px;
+
+                        a {
+                            text-decoration: none;
+                            // border: 1px solid;
+                            text-align: center;
+                            color: #333;
+                            display: block;
+                            border-radius: 3px;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .movie_not_yaoshen:hover {
+            transform: translateY(-90px);
+            transition: all 1s;
+        }
+
+        .movie_not_yaoshen:hover .season_1 {
+            transform: translateY(100px);
+            transition: all 1s;
+        }
+    }
+
+    .coming_soon {
+        height: 120px;
+        width: 372px;
+        // border: 1px solid;
+        text-align: center;
+        display: flex;
+        // text-align: center;
+        justify-content: center;
+        margin-top: 20px;
+        padding-top: 15px;
+
+        p {
+            font-weight: 200;
+            font-family: 'Helvetica';
+            position: absolute;
+            font-size: 20px;
+            // top: -23px;
+            color: #333;
+            // left: 0px;
+        }
+    }
+}
+
+// 设置媒体查询  针对平板
+@media(min-width: 481px) and (max-width: 1024px){
+    .movie_grid{
+        // border: 1px solid;
+        width: 1022px;
+
+        h2{
+            font-size: 25px;
+        }
+        .movie_grid_2{
+            // border: 1px solid;
+            width: 100%;
+            padding-top: 6px;
+        }
+    }
+}
+
+// 设置媒体查询 pc端
+@media(min-width: 1025px){
+    .movie_grid{
+        // border: 1px solid red;
+        width: 1022px;
+        height: 970px;
+        margin: 0 auto;
+        // margin-left: 50%;
+        // position: absolute;
+        // left: 50%;
+        // transform: translateX(-50%);
+
+        
+        h2{
+            font-size: 25px;
+        }
+        .movie_grid_2{
+            // border: 1px solid;
+            width: 100%;
+            padding-top: 5px;
+        }
+    }
+}

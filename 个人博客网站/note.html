@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人学习笔记</title>
+    <link rel="stylesheet" href="./css/reset.css"><!--重置样式表-->
+    <link rel="icon" href="./log/logo2.png"><!--logo图标-->
+    <link rel="stylesheet" href="./css/note_css.css">
+    <link rel="stylesheet" href="./font/webfonts/all.css">
+    <!-- <link rel="stylesheet" href="./css/home_css.css"> -->
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="Header_one">
+        <header class="Header_box">
+            <div class="Header_logo">
+                <a href="./index.html"><img src="./log/logo2.png" alt="logo图标"></a>
+            </div>
+            <div class="Header_box2">
+                <label class="Header_box2_label">
+                    <input type="checkbox">
+                    <svg viewBox="0 0 32 32">
+                        <path class="line line-top-bottom"
+                            d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
+                        </path>
+                        <path class="line" d="M7 16 27 16"></path>
+                    </svg>
+                    <ul>
+                        <li><a href="./movie.html">电影分享</a></li>
+                        <li><a href="./wait_for_a_moment.html">小说分享</a></li>
+                        <li><a href="https://github.com/yfl279/website_source_code/tree/main">网站开源</a></li>
+                        <li><a href="./note.html">学习资料</a></li>
+                    </ul>
+                </label>
+            </div>
+        </header>
+    </div>
+
+    <div class="note_grid">
+        <ul class="note_js">
+            <i class="fa-brands fa-js"></i>
+            <p>点击按钮下载文档</p>
+            <li class="note_js_box">
+                <a href="./note/javascript笔记.docx" class="js_click">JS笔记(比较浅显)</a>
+            </li>
+        </ul>
+
+        <ul class="note_css">
+            <i class="fa-brands fa-css3-alt"></i>
+            <p>点击按钮下载文档</p>
+            <li class="note_css_box">
+                <a href="./note/笔记.doc" class="js_click">CSS笔记</a>
+                <a href="./note/CSS2笔记.pdf" download class="js_click">尚硅谷CSS2笔记</a>
+                <a href="./note/CSS3笔记.pdf" download class="js_click">尚硅谷CSS3笔记</a>
+            </li>
+        </ul>
+
+        <ul class="note_html">
+            <i class="fa-brands fa-html5"></i>
+            <p>点击按钮下载文档</p>
+            <li class="note_html_box">
+                <a href="./note/HTML4笔记.pdf" download class="js_click">尚硅谷HTML4笔记</a>
+                <a href="./note/HTML5笔记.pdf" download class="js_click">尚硅谷HTML5笔记</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- JS -->
+    <script>
+        let download = document.querySelectorAll(".js_click");
+
+        download.forEach(function(link){
+            link.addEventListener("click",function(event){
+                event.preventDefault();//阻止默认的链接行为
+
+                if(confirm("是否下载?")){
+                    window.location.href = link.href;//如果点击确认 就下载
+                } else{
+                    // 不下载
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
