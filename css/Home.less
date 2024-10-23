@@ -78,6 +78,34 @@
         background-color: rgba(42, 174, 104, 0.784);
         color: #fff;
         border-radius: 5px;
+        position: relative;
+        cursor: pointer;
+        // text-decoration: none;
+
+        // a{
+        //     border: 1px solid rgba(42, 174, 104, 0.784);
+        //     background-color: rgba(42, 174, 104, 0.784);
+        //     position: absolute;
+        //     left: 0px;
+        //     width: 50px;
+        //     height: 50px;
+        //     border-radius: 50%;
+        //     line-height: 55px;
+        //     // opacity: 0;
+        //     display: none;
+
+        //     i{
+        //         font-size: 25px;
+        //     }
+        // }
+    }
+
+    // .call_me:active a{
+    //     display: block;
+    // }
+
+    a {
+        text-decoration: none;
     }
 }
 
@@ -131,7 +159,7 @@
             position: absolute;
             // margin: ;
             bottom: 0px;
-            right: +50%;
+            right: 50%;
 
             img {
                 width: calc(90% + 1vw);
@@ -342,7 +370,7 @@
             background-position: -550px -275px;
         }
 
-        
+
     }
 
 }
@@ -471,4 +499,183 @@
     border: 1px solid;
     margin: 20px 20px 0px 20px;
     height: 300px;
+}
+
+
+//移动端适配
+/* 移动端适配 */
+@media (max-width: 768px) {
+
+    /* 针对移动设备的样式 */
+    .discuss {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* 每行占据整个宽度 */
+        grid-template-rows: repeat(9, 1fr);
+        /* 9 行 */
+        grid-template-areas:
+            "NBA"
+            "OHTANI"
+            "NBA_2"
+            "politics"
+            "NBA_3"
+            "game"
+            "politics_2"
+            "NBA_4"
+            "NBA_5";
+        margin: 0px;
+
+        // div{
+        //     // margin: 0px;
+        // }
+    }
+
+    /* 针对每个区域设置样式 */
+    .NBA {
+        grid-area: NBA;
+    }
+
+    .politics {
+        grid-area: politics;
+    }
+
+    .NBA_2 {
+        grid-area: NBA_2;
+    }
+
+    .NBA_3 {
+        grid-area: NBA_3;
+    }
+
+    .OHTANI {
+        grid-area: OHTANI;
+    }
+
+    .game {
+        grid-area: game;
+    }
+
+    .politics_2 {
+        grid-area: politics_2;
+    }
+
+    .game_2 {
+        grid-area: game_2;
+    }
+
+    .NBA_4 {
+        grid-area: NBA_4;
+    }
+
+    .NBA_5 {
+        grid-area: NBA_5;
+    }
+
+    // 优秀的网站和工具推荐
+    .services-ticker-block{
+        // border: 1px solid red;
+        p{
+            border: 1px solid;
+            font-size: 15px;
+        }
+
+        .stb_line_single{
+            // border: 1px solid red;
+
+            .stb-item{
+                // border: 1px solid green;
+                // margin-right: 3rem;
+                margin-right: 3rem;
+                li{
+                    // border: 1px solid;
+                    width: 70px;
+                    height: 70px;
+                    line-height: 70px;
+                    background-size: calc(350px);
+                }
+            }
+            
+            .AI {
+                // background-color: orange;
+                background-image: url(../log/分享log.png);
+                background-position: -10px 0px;
+                // background-size: calc(700px - 2vw);
+            }
+    
+            .MDN {
+                background-image: url(../log/分享log.png);
+                background-position: -200px -67px;
+            }
+    
+            .rookie {
+                background-image: url(../log/分享log.png);
+                background-position: -70px -132px;
+            }
+    
+            .Software_Downloading {
+                background-image: url(../log/分享log.png);
+                background-position: -200px 0px;
+            }
+    
+            .picture {
+                background-image: url(../log/分享log.png);
+                background-position: -272px 0px;
+            }
+    
+            .codepen {
+                background-image: url(../log/分享log.png);
+                background-position: -17px -172px;
+                // background-size: 400px;
+                background-size: calc(450px) !important;
+            }
+    
+            .UI {
+                background-image: url(../log/分享log.png);
+                background-position: -140px -74px;
+            }
+            
+            // web灵感
+            .inspiration {
+                background-image: url(../log/分享log.png);
+                background-position: -73px 0px;
+            }
+    
+            .science {
+                background-image: url(../log/分享log.png);
+                background-position: -140px 0px;
+            }
+    
+            .BT {
+                background-image: url(../log/分享log.png);
+                background-position: -272px -74px;
+            }
+    
+            .YouTube {
+                background-image: url(../log/分享log.png);
+                background-position: -73px -74px;
+            }
+    
+            .file {
+                background-image: url(../log/分享log.png);
+                background-position: -7px -73px;
+            }
+    
+            .github {
+                background-image: url(../log/分享log.png);
+                background-position: -195px -132px;
+                // background-size: 340px;
+            }
+    
+            .free_icon {
+                background-image: url(../log/分享log.png);
+                background-position: -135px -129px;
+                // background-size: 380px;
+            }
+    
+            .B {
+                background-image: url(../log/分享log.png);
+                background-position: -268px -128px;
+            }
+        }    
+    }
 }

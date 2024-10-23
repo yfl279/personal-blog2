@@ -24,9 +24,13 @@
 
         <div class="bored"></div>
 
-        <div class="chat">闲聊</div>
+        <!-- <div class="chat">闲聊</div> -->
 
-        <div class="call_me">联系我</div>
+        <a href="mailto:lyf006@qq.com">
+            <div class="call_me">联系我
+                <i class="fa-solid fa-envelope" style="color: #fcb000;"></i>
+            </div>
+        </a>
     </div>
 
     <!-- 简介 -->
@@ -155,7 +159,7 @@
             <a href="https://search.bilibili.com/all?keyword=web&from_source=webtop_search&spm_id_from=333.1007&search_source=5"
                 target="_blank" class="stb-item">
                 <li class="kehua">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="139" height="30" viewBox="0 0 139 30">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="30" viewBox="0 0 139 30">
                         <defs>
                             <radialGradient id="_1989062473__a" cx="0" cy="0" r="1"
                                 gradientTransform="matrix(.21 -.67353 .2545 .07935 .512 1.109)">
@@ -279,18 +283,14 @@
         <div class="NBA_4">
             <a href="">河村勇辉的加入是否会改变灰熊现状</a>
             <video id="myVideo" class="video" muted>
-                <source
-                    src="./video/灰熊.mp4"
-                    type="video/mp4">
+                <source src="./video/灰熊.mp4" type="video/mp4">
                 抱歉,您的浏览器不支持视频.
             </video>
         </div>
         <div class="NBA_5">
             <a href="">勇士下一步该怎么走</a>
             <video id="myVideo" class="video" muted>
-                <source
-                    src="./video/勇士.mp4"
-                    type="video/mp4">
+                <source src="./video/勇士.mp4" type="video/mp4">
                 抱歉,您的浏览器不支持视频.
             </video>
         </div>
@@ -305,8 +305,10 @@
     <script src="./动画库/gsap-public/gsap-public/minified/gsap.min.js"></script>
     <!-- 动画JS -->
     <script src="./JS/主页中的网站推荐动画滚动.js"></script>
-    <!-- 动画JS -->
+    <!-- 加载电脑端脚本 -->
     <script src="./JS/视频动画.js"></script>
+    <!-- 加载移动端脚本 -->
+     <!-- <script src="./JS/视频动画(移动端).js" media="(max-width: 768px)"></script> -->
 </body>
 
 </html>
