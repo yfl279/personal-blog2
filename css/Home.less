@@ -134,7 +134,7 @@
             font-weight: 200;
             // border: 1px solid red;
             position: absolute;
-            top: 30%;
+            top: 15%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 99;
@@ -242,8 +242,8 @@
     overflow-x: hidden;
     // border: 1px solid red;
     overflow-y: hidden;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 35px;
+    margin-bottom: 50px;
 
     p {
         position: absolute;
@@ -395,8 +395,9 @@
         "game game politics_2 politics_2"
         "game game politics_2 politics_2"
         "NBA_4 NBA_4 NBA_4 NBA_5";
-    padding: 30px;
+    // padding: 30px;
     // color: #fff;
+    position: relative;
 
     // 子元素
     div {
@@ -494,6 +495,17 @@
     }
 }
 
+// news前面的标题
+.discuss::before {
+    content: "感兴趣的事";
+    position: absolute;
+    // border: 1px solid;
+    font-weight: 200;
+    // font-size: 20px;
+    z-index: 90;
+    top: -17px;
+}
+
 // 留言
 .leave_words {
     border: 1px solid;
@@ -523,7 +535,8 @@
             "politics_2"
             "NBA_4"
             "NBA_5";
-        margin: 0px;
+        // margin: 0px;
+        margin: 0 20px 0px 20px;
 
         // div{
         //     // margin: 0px;
@@ -572,21 +585,23 @@
     }
 
     // 优秀的网站和工具推荐
-    .services-ticker-block{
+    .services-ticker-block {
+
         // border: 1px solid red;
-        p{
-            border: 1px solid;
+        p {
+            // border: 1px solid;
             font-size: 15px;
         }
 
-        .stb_line_single{
+        .stb_line_single {
             // border: 1px solid red;
 
-            .stb-item{
+            .stb-item {
                 // border: 1px solid green;
                 // margin-right: 3rem;
                 margin-right: 3rem;
-                li{
+
+                li {
                     // border: 1px solid;
                     width: 70px;
                     height: 70px;
@@ -594,88 +609,88 @@
                     background-size: calc(350px);
                 }
             }
-            
+
             .AI {
                 // background-color: orange;
                 background-image: url(../log/分享log.png);
                 background-position: -10px 0px;
                 // background-size: calc(700px - 2vw);
             }
-    
+
             .MDN {
                 background-image: url(../log/分享log.png);
-                background-position: -200px -67px;
+                background-position: -200px -67.5px;
             }
-    
+
             .rookie {
                 background-image: url(../log/分享log.png);
                 background-position: -70px -132px;
             }
-    
+
             .Software_Downloading {
                 background-image: url(../log/分享log.png);
                 background-position: -200px 0px;
             }
-    
+
             .picture {
                 background-image: url(../log/分享log.png);
                 background-position: -272px 0px;
             }
-    
+
             .codepen {
                 background-image: url(../log/分享log.png);
                 background-position: -17px -172px;
                 // background-size: 400px;
                 background-size: calc(450px) !important;
             }
-    
+
             .UI {
                 background-image: url(../log/分享log.png);
                 background-position: -140px -74px;
             }
-            
+
             // web灵感
             .inspiration {
                 background-image: url(../log/分享log.png);
                 background-position: -73px 0px;
             }
-    
+
             .science {
                 background-image: url(../log/分享log.png);
                 background-position: -140px 0px;
             }
-    
+
             .BT {
                 background-image: url(../log/分享log.png);
                 background-position: -272px -74px;
             }
-    
+
             .YouTube {
                 background-image: url(../log/分享log.png);
                 background-position: -73px -74px;
             }
-    
+
             .file {
                 background-image: url(../log/分享log.png);
                 background-position: -7px -73px;
             }
-    
+
             .github {
                 background-image: url(../log/分享log.png);
                 background-position: -195px -132px;
                 // background-size: 340px;
             }
-    
+
             .free_icon {
                 background-image: url(../log/分享log.png);
                 background-position: -135px -129px;
                 // background-size: 380px;
             }
-    
+
             .B {
                 background-image: url(../log/分享log.png);
                 background-position: -268px -128px;
             }
-        }    
+        }
     }
 }
