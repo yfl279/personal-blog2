@@ -114,7 +114,7 @@
     height: 100%;
 
     .introduce_img {
-        border: 1px solid gray;
+        border: 1px dashed gray;
         margin-top: 20px;
         margin-left: 20px;
         margin-right: 20px;
@@ -242,8 +242,8 @@
     overflow-x: hidden;
     // border: 1px solid red;
     overflow-y: hidden;
-    margin-top: 35px;
-    margin-bottom: 50px;
+    margin-top: 25px;
+    margin-bottom: 60px;
 
     p {
         position: absolute;
@@ -286,7 +286,7 @@
 
         .stb-item:hover {
             color: black;
-            border: 1px solid #dbdcdd;
+            border: 1px dashed #dbdcdd;
             border-radius: 5px;
         }
 
@@ -379,9 +379,8 @@
 //讨论
 .discuss {
     height: 80rem;
-    border: 1px solid gray;
-
-    margin: 0 20px 0px 20px;
+    border: 1px dashed gray;
+    margin: 0px 20px 50px 20px;
     border-radius: 5px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -501,16 +500,16 @@
     position: absolute;
     // border: 1px solid;
     font-weight: 200;
-    // font-size: 20px;
+    font-size: 20px;
     z-index: 90;
-    top: -17px;
+    top: -22px;
 }
 
 // 留言
 .comment-section {
-    border: 1px solid;
-    margin: 20px 20px 0px 20px;
-    height: 300px;
+    border: 1px dashed gray;
+    margin: 20px 20px 100px 20px;
+    // height: 300px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -526,7 +525,7 @@
         .user_comment_2 {
             // border: 1px solid blue;
             border-radius: 5px;
-            background-color: rgba(128, 128, 128, 0.132);
+            background-color: rgba(213, 212, 212, 0.515);
             margin: 5px;
             // position: relative;
             display: flex;
@@ -540,8 +539,10 @@
                 height: 44px;
                 border: 1px solid rgba(0, 0, 0, 0.695);
                 border-radius: 5px;
-                flex-shrink: 0; /* 防止头像被缩小 */
+                flex-shrink: 0;
+                /* 防止头像被缩小 */
                 // position: absolute;
+                margin: 8px 0px 0px 8px;
 
                 img {
                     width: 100%;
@@ -584,6 +585,52 @@
     }
 }
 
+.comment-section::before {
+    content: "讨论区";
+    font-weight: 200;
+    // top: -10px;
+    position: absolute;
+    top: -22px;
+    font-size: 20px;
+}
+
+// 输入评论
+.user_input {
+    // border: 1px solid;
+    width: 250px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    position: sticky;
+    z-index: 99;
+    // box-sizing: border-box;
+
+    .input_box {
+        width: 100%;
+        /* 让输入框宽度自适应 */
+        max-width: 250px;
+        /* 设置最大宽度 */
+        padding: 10px;
+        /* 内边距 */
+        border: 2px solid rgba(213, 212, 212, 0.515);
+        /* 边框 */
+        border-radius: calc(0.5 * 48px);
+        /* 圆角边框 */
+        font-size: 16px;
+        /* 字体大小 */
+        transition: 0.8s;
+        box-sizing: border-box; /* 确保输入框宽度计算包含内边距和边框 */
+        overflow-y: auto;
+        resize: none;
+        height: 48px;
+        line-height: 1.5;
+    }
+
+    .input_box:focus {
+        border-color: #8f8d8d; /* 聚焦时边框颜色 */
+        outline: none; /* 去掉默认的轮廓 */
+        transition: 0.8s;
+    }
+}
 
 //移动端适配
 /* 移动端适配 */
@@ -607,7 +654,7 @@
             "NBA_4"
             "NBA_5";
         // margin: 0px;
-        margin: 0 20px 0px 20px;
+        margin: 0px 20px 50px 20px;
 
         // div{
         //     // margin: 0px;
