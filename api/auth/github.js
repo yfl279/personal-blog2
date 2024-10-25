@@ -4,8 +4,8 @@ import passport from 'passport';
 import GitHubStrategy from 'passport-github2';
 import session from 'express-session';
 
-const GITHUB_CLIENT_ID = '你的 GitHub Client ID';
-const GITHUB_CLIENT_SECRET = '你的 GitHub Client Secret';
+const GITHUB_CLIENT_ID = 'Ov23lii02aXrfmvfn4OO';
+const GITHUB_CLIENT_SECRET = '1159f09ac71da5fd3e88691cd49aba40232098e0';
 
 passport.use(new GitHubStrategy({
   clientID: GITHUB_CLIENT_ID,
