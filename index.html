@@ -307,13 +307,35 @@
         <button id="github-login">使用 GitHub 登录</button>
         <div id="comments"></div>
     </div> -->
+
+    <!-- 评论 -->
     <div class="comment-section">
-        <h2>发表评论</h2>
-        <textarea id="comment" placeholder="在这里写下你的评论..."></textarea>
-        <button onclick="submitComment()">提交评论</button>
-        <ul id="comment-list"></ul>
+        <div class="user_comment">
+            <div class="user_comment_2">
+                <div class="user_avatar">
+                    <img src="./log/logo2.png">
+                </div>
+                <div class="text_coment">
+                    <span>你好，我是梁益飞</span>
+                    <span class="time">2024/10/25</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="user_comment">
+            <div class="user_comment_2">
+                <div class="user_avatar">
+                    <img src="./log/logo2.png">
+                </div>
+                <div class="text_coment">
+                    <span>你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞</span>
+                    <span class="time">2024/10/25</span>
+                </div>
+            </div>
+        </div>
+
     </div>
-    
+
 
 
     <!-- 使用动画库 -->
@@ -325,64 +347,6 @@
     <!-- 加载移动端脚本 -->
     <!-- <script src="./JS/视频动画(移动端).js" media="(max-width: 768px)"></script> -->
     <!-- 用户登入评论 -->
-    <script>
-        // 初始化 Supabase
-        const { createClient } = supabase;
-        const supabaseUrl = '你的 Supabase URL';
-        const supabaseKey = '你的 Supabase 匿名密钥';
-        const supabase = createClient(supabaseUrl, supabaseKey);
-    
-        // 用于登录 GitHub 的函数
-        async function loginWithGitHub() {
-            const { user, error } = await supabase.auth.signInWithOAuth({
-                provider: 'github',
-            });
-    
-            if (error) {
-                console.error('登录失败:', error.message);
-            } else {
-                console.log('登录成功:', user);
-            }
-        }
-    
-        // 提交评论的函数
-        async function submitComment() {
-            const comment = document.getElementById('comment').value;
-            const { data, error } = await supabase
-                .from('comments') // 确保你的数据库中有一个叫 'comments' 的表
-                .insert([{ content: comment, user_id: supabase.auth.user().id }]);
-    
-            if (error) {
-                console.error('提交评论失败:', error.message);
-            } else {
-                console.log('评论提交成功:', data);
-                // 刷新评论列表
-                fetchComments();
-            }
-        }
-    
-        // 获取评论的函数
-        async function fetchComments() {
-            const { data, error } = await supabase
-                .from('comments')
-                .select('*');
-    
-            if (error) {
-                console.error('获取评论失败:', error.message);
-            } else {
-                const commentList = document.getElementById('comment-list');
-                commentList.innerHTML = ''; // 清空评论列表
-                data.forEach(comment => {
-                    const li = document.createElement('li');
-                    li.textContent = comment.content;
-                    commentList.appendChild(li);
-                });
-            }
-        }
-    
-        // 页面加载时获取评论
-        window.onload = fetchComments;
-    </script>    
 </body>
 
 </html>
