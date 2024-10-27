@@ -509,11 +509,12 @@
 .comment-section {
     border: 1px dashed gray;
     margin: 20px 20px 100px 20px;
-    // height: 300px;
+    height: 550px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow: scroll;
 
     .user_comment {
         // border: 1px solid red;
@@ -560,6 +561,15 @@
                 width: 700px;
                 position: relative;
 
+                // 用户头像
+                .user_id{
+                    // border: 1px solid ;
+                    font-weight: 200;
+                    font-size: 13px;
+                    // padding-bottom: 5px;
+                    margin-bottom: 5px;
+                }
+
                 // margin-top: -10px;
                 span {
                     // font-weight: 200;
@@ -603,32 +613,65 @@
     position: sticky;
     z-index: 99;
     // box-sizing: border-box;
+    bottom: 0px;
+    // left: 50%;
+    // transform: translateX(-50%);
+    // background-color: transparent;
+    
 
-    .input_box {
-        width: 100%;
-        /* 让输入框宽度自适应 */
-        max-width: 250px;
-        /* 设置最大宽度 */
-        padding: 10px;
-        /* 内边距 */
-        border: 2px solid rgba(213, 212, 212, 0.515);
-        /* 边框 */
-        border-radius: calc(0.5 * 48px);
-        /* 圆角边框 */
-        font-size: 16px;
-        /* 字体大小 */
-        transition: 0.8s;
-        box-sizing: border-box; /* 确保输入框宽度计算包含内边距和边框 */
-        overflow-y: auto;
-        resize: none;
-        height: 48px;
-        line-height: 1.5;
-    }
+    .user_input2{
+        // border: 1px solid ;
+        // position: sticky;
+        // bottom: 5px;
 
-    .input_box:focus {
-        border-color: #8f8d8d; /* 聚焦时边框颜色 */
-        outline: none; /* 去掉默认的轮廓 */
-        transition: 0.8s;
+        .input_box {
+            width: 100%;
+            /* 让输入框宽度自适应 */
+            max-width: 250px;
+            /* 设置最大宽度 */
+            padding: 10px;
+            /* 内边距 */
+            border: 2px solid rgba(213, 212, 212, 0.515);
+            /* 边框 */
+            border-radius: calc(0.5 * 48px);
+            /* 圆角边框 */
+            font-size: 16px;
+            /* 字体大小 */
+            transition: 0.8s;
+            box-sizing: border-box; /* 确保输入框宽度计算包含内边距和边框 */
+            overflow-y: auto;
+            resize: none;
+            height: 48px;
+            line-height: 1.5;
+            position: relative;
+            background-color: transparent;
+            backdrop-filter: blur(8px);
+        }
+    
+        // 发送按钮
+        .fa-paper-plane{
+            border: 1px solid rgba(213, 212, 212, 0.515);
+            padding: 10px;
+            border-radius: calc(0.5 * 48px);
+            background-color: rgba(213, 212, 212, 0.515);
+            color: #8f8d8d;
+            cursor: pointer;
+            position: absolute;
+            right: 8px;
+            top: 5px;
+            transition: 0.8s;
+        }
+    
+        .fa-paper-plane:hover{
+            border-color: #8f8d8d;
+            transition: 0.8s;
+        }
+    
+        .input_box:focus {
+            border-color: #8f8d8d; /* 聚焦时边框颜色 */
+            outline: none; /* 去掉默认的轮廓 */
+            transition: 0.8s;
+        }
     }
 }
 
