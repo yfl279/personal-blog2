@@ -25,7 +25,7 @@ const signInWithGitHub = async () => {
   };
   
   // 示例：调用 GitHub 登录函数
-  document.getElementById('github-login').addEventListener('click', signInWithGitHub);
+  // document.getElementById('github-login').addEventListener('click', signInWithGitHub);
   
 
 

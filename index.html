@@ -11,9 +11,11 @@
     <!-- 使用外部的字体 -->
     <link rel="stylesheet" href="./font/webfonts/all.css">
     <link rel="icon" href="./log/logo2.png" type="image/png">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/supabase.min.js"></script>
     <script src="https://unpkg.com/@octokit/rest/dist/octokit-rest.min.js"></script>
-    <script type="module" src="./JS/comments.js"></script>
+    <!-- <script type="module" src="./JS/comments.js"></script> -->
+    <!-- <script type="module" src="./JS/script.js"></script> -->
 </head>
 
 <body>
@@ -299,8 +301,8 @@
     </div>
 
     <!-- 后端代码 -->
-    <script type="module" src="./api/index.js"></script>
-    <script src="./server.js"></script>
+    <!-- <script type="module" src="./api/index.js"></script> -->
+    <!-- <script src="./server.js"></script> -->
 
     <!-- leave words 留言 -->
     <!-- <div class="leave_words">
@@ -374,11 +376,11 @@
 
         <!-- 输入评论 -->
         <div class="user_input">
-           <div class="user_input2">
-             <!-- <label for="comment">评论:</label> -->
-             <textarea type="text" id="coment" class="input_box" placeholder="请开始你的发言"></textarea>
-             <i class="fa-solid fa-paper-plane"></i>
-           </div>
+            <div class="user_input2">
+                <!-- <label for="comment">评论:</label> -->
+                <textarea type="text" id="coment" class="input_box" placeholder="请开始你的发言"></textarea>
+                <i class="fa-solid fa-paper-plane"></i>
+            </div>
         </div>
     </div>
 
@@ -395,9 +397,105 @@
     <!-- 用户登入评论 -->
     <!-- 输入框高度动态调节 -->
     <script src="./JS/输入框自动调整.js"></script>
-    <script src="./api/auth/github.js"></script>
+    <!-- <script src="./api/auth/github.js"></script> -->
     <!-- 用户输入评论 -->
-     <script src="./JS/用户输入评论.js"></script>
+    <!-- <script src="./JS/用户输入评论.js"></script> -->
+    <!-- <script type="module" src="./server.js"></script> -->
+
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.js';
+        // 导入 Supabase 客户端库
+        // import { createClient } from '@supabase/supabase-js';
+
+        // Supabase 配置
+        const supabaseUrl = 'https://fjvwrckmrqijzqeszwxy.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqdndyY2ttcnFpanpxZXN6d3h5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk2NzM0MzIsImV4cCI6MjA0NTI0OTQzMn0.7PdAPRofETNEGJSEziqRvrWfoFs11ZToTJHqM_VmT4g'; // 请替换为你的匿名密钥
+        const supabase = createClient(supabaseUrl, supabaseKey);
+
+        // 加载评论
+        document.addEventListener("DOMContentLoaded", loadComments);
+
+        // 提交评论按钮的事件监听器
+        document.querySelector('.fa-paper-plane').addEventListener('click', addComment);
+        document.querySelector('.submit-button').addEventListener('click', async () => {
+            const comment = document.getElementById('comment').value;
+            const userId = 'some-user-id'; // 用户 ID，可以动态生成或从后台获取
+
+            const { data, error } = await supabase
+                .from('comments')
+                .insert([{ content: comment, user_id: userId }]);
+
+            if (error) {
+                console.error('评论添加失败:', error.message);
+            } else {
+                console.log('评论添加成功:', data);
+            }
+        });
+
+        // 加载评论的函数
+        async function loadComments() {
+            const { data: comments, error } = await supabase
+                .from('comments')
+                .select('*')
+                .order('id', { ascending: false });
+
+            if (error) {
+                alert('获取评论失败，请稍后再试。');
+                console.error('获取评论失败:', error);
+                return;
+            }
+
+            comments.forEach(comment => {
+                addCommentToDOM(comment.content, comment.date); // 使用正确的字段名
+            });
+        }
+
+        // 添加评论的函数
+        async function addComment() {
+            const commentText = document.getElementById("coment").value;
+            if (!commentText.trim()) {
+                alert("请输入评论内容");
+                return;
+            }
+
+            const currentDate = new Date();
+            const formattedDate = currentDate.toLocaleDateString(); // 更灵活的日期格式
+
+            const { data, error } = await supabase
+                .from('comments')
+                .insert([{ content: commentText, date: formattedDate }]);
+
+            if (error) {
+                alert('插入评论失败，请稍后再试。');
+                console.error('插入评论失败:', error);
+                return;
+            }
+
+            addCommentToDOM(commentText, formattedDate);
+            document.getElementById("coment").value = ""; // 清空输入框
+        }
+
+        // 添加评论到 DOM 的函数
+        function addCommentToDOM(commentText, formattedDate) {
+            const newComment = document.createElement("div");
+            newComment.classList.add("user_comment");
+            newComment.innerHTML = `
+        <div class="user_comment_2">
+            <div class="user_avatar">
+                <img src="./log/logo2.png">
+            </div>
+            <div class="text_coment">
+                <span>${commentText}</span>
+                <span class="time">${formattedDate}</span>
+            </div>
+        </div>
+    `;
+
+            const commentSection = document.querySelector(".comment-section");
+            commentSection.insertBefore(newComment, commentSection.querySelector(".user_input"));
+        }
+
+    </script>
 </body>
 
 </html>
