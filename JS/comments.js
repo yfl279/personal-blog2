@@ -1,90 +1,70 @@
-// 导入 Supabase 客户端库
-// import { createClient } from '@supabase/supabase-js';
+// <!-- 引入 Supabase JavaScript 库 -->
+    // <script>
+        // 初始化 Supabase 客户端
+        const SUPABASE_URL = "https://fjvwrckmrqijzqeszwxy.supabase.co";
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqdndyY2ttcnFpanpxZXN6d3h5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk2NzM0MzIsImV4cCI6MjA0NTI0OTQzMn0.7PdAPRofETNEGJSEziqRvrWfoFs11ZToTJHqM_VmT4g"; // 替换为你的真实匿名密钥
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// Supabase 配置
-const supabaseUrl = 'https://fjvwrckmrqijzqeszwxy.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqdndyY2ttcnFpanpxZXN6d3h5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk2NzM0MzIsImV4cCI6MjA0NTI0OTQzMn0.7PdAPRofETNEGJSEziqRvrWfoFs11ZToTJHqM_VmT4g'; // 请替换为你的匿名密钥
-const supabase = createClient(supabaseUrl, supabaseKey);
+        // 获取评论数据
+        async function fetchComments() {
+            try {
+                const { data, error } = await supabaseClient
+                    .from('comments')
+                    .select('*')
+                    .order('created_at', { ascending: false });
 
-// 加载评论
-document.addEventListener("DOMContentLoaded", loadComments);
+                if (error) {
+                    console.error("Error fetching comments:", error);
+                } else {
+                    console.log("Fetched comments:", data);
+                    displayComments(data);
+                }
+            } catch (error) {
+                console.error("Unexpected error:", error);
+            }
+        }
 
-// 提交评论按钮的事件监听器
-document.querySelector('.fa-paper-plane').addEventListener('click', addComment);
-document.querySelector('.submit-button').addEventListener('click', async () => {
-    const comment = document.getElementById('comment').value;
-    const userId = 'some-user-id'; // 用户 ID，可以动态生成或从后台获取
+        // 渲染评论到页面
+        function displayComments(comments) {
+            const commentsContainer = document.getElementById("commentsContainer");
+            commentsContainer.innerHTML = ""; // 清空已有内容
+            comments.forEach(comment => {
+                const commentElement = document.createElement("div");
+                commentElement.classList.add("user_comment");
+                commentElement.innerHTML = `
+                    <div class="user_comment_2">
+                        <div class="user_avatar">
+                            <img src="./log/logo2.png" alt="Avatar">
+                        </div>
+                        <div class="text_coment">
+                            <div class="user_id">${comment.username}</div>
+                            <span>${comment.content}</span>
+                            <span class="time">${new Date(comment.created_at).toLocaleString()}</span>
+                        </div>
+                    </div>
+                `;
+                commentsContainer.appendChild(commentElement);
+            });
+        }
 
-    const { data, error } = await supabase
-        .from('comments')
-        .insert([{ content: comment, user_id: userId }]);
+        // 提交评论
+        document.getElementById('commentForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // 阻止默认提交行为
+            const username = document.getElementById('usernameInput').value;
+            const commentContent = document.getElementById('commentInput').value;
 
-    if (error) {
-        console.error('评论添加失败:', error.message);
-    } else {
-        console.log('评论添加成功:', data);
-    }
-});
+            const { data, error } = await supabaseClient
+                .from('comments')
+                .insert([{ content: commentContent, username: username }]);
 
-// 加载评论的函数
-async function loadComments() {
-    const { data: comments, error } = await supabase
-        .from('comments')
-        .select('*')
-        .order('id', { ascending: false });
+            if (error) {
+                console.error("Error inserting comment:", error);
+            } else {
+                document.getElementById('usernameInput').value = ''; // 清空输入框
+                document.getElementById('commentInput').value = ''; // 清空输入框
+                fetchComments(); // 重新获取评论
+            }
+        });
 
-    if (error) {
-        alert('获取评论失败，请稍后再试。');
-        console.error('获取评论失败:', error);
-        return;
-    }
-
-    comments.forEach(comment => {
-        addCommentToDOM(comment.content, comment.date); // 使用正确的字段名
-    });
-}
-
-// 添加评论的函数
-async function addComment() {
-    const commentText = document.getElementById("coment").value;
-    if (!commentText.trim()) {
-        alert("请输入评论内容");
-        return;
-    }
-
-    const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleDateString(); // 更灵活的日期格式
-
-    const { data, error } = await supabase
-        .from('comments')
-        .insert([{ content: commentText, date: formattedDate }]);
-
-    if (error) {
-        alert('插入评论失败，请稍后再试。');
-        console.error('插入评论失败:', error);
-        return;
-    }
-
-    addCommentToDOM(commentText, formattedDate);
-    document.getElementById("coment").value = ""; // 清空输入框
-}
-
-// 添加评论到 DOM 的函数
-function addCommentToDOM(commentText, formattedDate) {
-    const newComment = document.createElement("div");
-    newComment.classList.add("user_comment");
-    newComment.innerHTML = `
-        <div class="user_comment_2">
-            <div class="user_avatar">
-                <img src="./log/logo2.png">
-            </div>
-            <div class="text_coment">
-                <span>${commentText}</span>
-                <span class="time">${formattedDate}</span>
-            </div>
-        </div>
-    `;
-
-    const commentSection = document.querySelector(".comment-section");
-    commentSection.insertBefore(newComment, commentSection.querySelector(".user_input"));
-}
+        // 页面加载时获取评论
+        window.onload = fetchComments;

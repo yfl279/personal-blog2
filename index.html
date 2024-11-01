@@ -12,10 +12,147 @@
     <link rel="stylesheet" href="./font/webfonts/all.css">
     <link rel="icon" href="./log/logo2.png" type="image/png">
     <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/supabase.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/supabase.min.js"></script> -->
     <script src="https://unpkg.com/@octokit/rest/dist/octokit-rest.min.js"></script>
     <!-- <script type="module" src="./JS/comments.js"></script> -->
     <!-- <script type="module" src="./JS/script.js"></script> -->
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+
+    <style>
+        /* 留言 */
+/* .comment-section {
+    border: 1px dashed gray;
+    margin: 20px 20px 100px 20px;
+    height: 550px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: scroll;
+} */
+
+.user_comment {
+    margin: 10px;
+}
+
+.user_comment_2 {
+    border-radius: 5px;
+    background-color: rgba(213, 212, 212, 0.515);
+    margin: 5px;
+    display: flex;
+    padding-bottom: 20px;
+    padding-right: 7px;
+}
+
+.user_avatar {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(0, 0, 0, 0.695);
+    border-radius: 5px;
+    flex-shrink: 0; /* 防止头像被缩小 */
+    margin: 8px 0px 0px 8px;
+}
+
+ .user_avatar img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 评论内容 */
+.text_coment {
+    margin: 10px 0px 0px 10px;
+    width: 700px;
+    position: relative;
+}
+
+.text_coment .user_id {
+    font-weight: 200;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.text_coment span {
+    line-height: 1.3;
+}
+
+/* time */
+.text_coment .time {
+    font-weight: 200;
+    height: 15px;
+    line-height: 15px;
+    position: absolute;
+    bottom: 0px;
+    font-size: 10px;
+    left: 0px;
+    bottom: -20px;
+}
+
+.user_comment_2::before {
+    content: "讨论区";
+    font-weight: 200;
+    position: absolute;
+    top: -22px;
+    font-size: 20px;
+}
+
+/* 输入评论 */
+.user_input {
+    width: 250px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    position: sticky;
+    z-index: 99;
+    bottom: 0px;
+}
+
+.user_input .user_input2 {
+    position: sticky;
+}
+
+.user_input .user_input2 .input_box {
+    width: 100%; /* 让输入框宽度自适应 */
+    max-width: 250px; /* 设置最大宽度 */
+    padding: 10px; /* 内边距 */
+    border: 2px solid rgba(213, 212, 212, 0.515); /* 边框 */
+    border-radius: calc(0.5 * 48px); /* 圆角边框 */
+    font-size: 16px; /* 字体大小 */
+    transition: 0.8s;
+    box-sizing: border-box; /* 确保输入框宽度计算包含内边距和边框 */
+    overflow-y: auto;
+    resize: none;
+    height: 48px;
+    line-height: 1.5;
+    position: relative;
+    background-color: transparent;
+    backdrop-filter: blur(8px);
+}
+
+/* 发送按钮 */
+.user_input .user_input2 .fa-paper-plane {
+    border: 1px solid rgba(213, 212, 212, 0.515);
+    padding: 10px;
+    border-radius: calc(0.5 * 48px);
+    background-color: rgba(213, 212, 212, 0.515);
+    color: #8f8d8d;
+    cursor: pointer;
+    position: absolute;
+    right: 8px;
+    top: 5px;
+    transition: 0.8s;
+}
+
+.user_input .user_input2 .fa-paper-plane:hover {
+    border-color: #8f8d8d;
+    transition: 0.8s;
+}
+
+.user_input .user_input2 .input_box:focus {
+    border-color: #8f8d8d; /* 聚焦时边框颜色 */
+    outline: none; /* 去掉默认的轮廓 */
+    transition: 0.8s;
+}
+
+    </style>
 </head>
 
 <body>
@@ -311,81 +448,40 @@
     </div> -->
 
     <!-- 评论 -->
-    <div class="comment-section">
+    <!-- <div class="comment-section">
         <div class="user_comment">
             <div class="user_comment_2">
                 <div class="user_avatar">
                     <img src="./log/logo2.png">
                 </div>
                 <div class="text_coment">
-                    <div class="user_id">孤独的狼</div>
-                    <span>你好，我是梁益飞</span>
-                    <span class="time">2024/10/25</span>
+                    <div class="user_id"></div>
+                    <span></span>
+                    <span class="time"></span>
                 </div>
             </div>
         </div>
 
-        <div class="user_comment">
-            <div class="user_comment_2">
-                <div class="user_avatar">
-                    <img src="./log/logo2.png">
-                </div>
-                <div class="text_coment">
-                    <div class="user_id">阳光总在风雨后</div>
-                    <span>你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞</span>
-                    <span class="time">2024/10/25</span>
-                </div>
-            </div>
-        </div>
-        <div class="user_comment">
-            <div class="user_comment_2">
-                <div class="user_avatar">
-                    <img src="./log/logo2.png">
-                </div>
-                <div class="text_coment">
-                    <div class="user_id">阳光总在风雨后</div>
-                    <span>你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞</span>
-                    <span class="time">2024/10/25</span>
-                </div>
-            </div>
-        </div>
-        <div class="user_comment">
-            <div class="user_comment_2">
-                <div class="user_avatar">
-                    <img src="./log/logo2.png">
-                </div>
-                <div class="text_coment">
-                    <div class="user_id">阳光总在风雨后</div>
-                    <span>你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞</span>
-                    <span class="time">2024/10/25</span>
-                </div>
-            </div>
-        </div>
-        <div class="user_comment">
-            <div class="user_comment_2">
-                <div class="user_avatar">
-                    <img src="./log/logo2.png">
-                </div>
-                <div class="text_coment">
-                    <div class="user_id">阳光总在风雨后</div>
-                    <span>你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞你好，我是梁益飞</span>
-                    <span class="time">2024/10/25</span>
-                </div>
-            </div>
-        </div>
 
-        <!-- 输入评论 -->
+        输入评论
         <div class="user_input">
             <div class="user_input2">
-                <!-- <label for="comment">评论:</label> -->
+                <label for="comment">评论:</label>
                 <textarea type="text" id="coment" class="input_box" placeholder="请开始你的发言"></textarea>
                 <i class="fa-solid fa-paper-plane"></i>
             </div>
         </div>
-    </div>
+    </div> -->
 
+    <div id="commentsContainer">加载中...</div>
 
+    <form id="commentForm">
+        <input type="text" id="usernameInput" placeholder="输入你的用户名" required>
+        <input type="text" id="commentInput" placeholder="输入你的评论..." required>
+        <button type="submit" id="submitButton">提交评论</button>
+    </form>
 
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> -->
     <!-- 使用动画库 -->
     <script src="./动画库/gsap-public/gsap-public/minified/gsap.min.js"></script>
     <!-- 动画JS -->
@@ -401,100 +497,77 @@
     <!-- 用户输入评论 -->
     <!-- <script src="./JS/用户输入评论.js"></script> -->
     <!-- <script type="module" src="./server.js"></script> -->
+    <!-- 引入 Supabase JavaScript 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script>
+        // 初始化 Supabase 客户端
+        const SUPABASE_URL = "https://fjvwrckmrqijzqeszwxy.supabase.co";
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqdndyY2ttcnFpanpxZXN6d3h5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk2NzM0MzIsImV4cCI6MjA0NTI0OTQzMn0.7PdAPRofETNEGJSEziqRvrWfoFs11ZToTJHqM_VmT4g"; // 替换为你的真实匿名密钥
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    <script type="module">
-        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.js';
-        // 导入 Supabase 客户端库
-        // import { createClient } from '@supabase/supabase-js';
+        // 获取评论数据
+        async function fetchComments() {
+            try {
+                const { data, error } = await supabaseClient
+                    .from('comments')
+                    .select('*')
+                    .order('created_at', { ascending: false });
 
-        // Supabase 配置
-        const supabaseUrl = 'https://fjvwrckmrqijzqeszwxy.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqdndyY2ttcnFpanpxZXN6d3h5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk2NzM0MzIsImV4cCI6MjA0NTI0OTQzMn0.7PdAPRofETNEGJSEziqRvrWfoFs11ZToTJHqM_VmT4g'; // 请替换为你的匿名密钥
-        const supabase = createClient(supabaseUrl, supabaseKey);
-
-        // 加载评论
-        document.addEventListener("DOMContentLoaded", loadComments);
-
-        // 提交评论按钮的事件监听器
-        document.querySelector('.fa-paper-plane').addEventListener('click', addComment);
-        document.querySelector('.submit-button').addEventListener('click', async () => {
-            const comment = document.getElementById('comment').value;
-            const userId = 'some-user-id'; // 用户 ID，可以动态生成或从后台获取
-
-            const { data, error } = await supabase
-                .from('comments')
-                .insert([{ content: comment, user_id: userId }]);
-
-            if (error) {
-                console.error('评论添加失败:', error.message);
-            } else {
-                console.log('评论添加成功:', data);
+                if (error) {
+                    console.error("Error fetching comments:", error);
+                } else {
+                    console.log("Fetched comments:", data);
+                    displayComments(data);
+                }
+            } catch (error) {
+                console.error("Unexpected error:", error);
             }
-        });
+        }
 
-        // 加载评论的函数
-        async function loadComments() {
-            const { data: comments, error } = await supabase
-                .from('comments')
-                .select('*')
-                .order('id', { ascending: false });
-
-            if (error) {
-                alert('获取评论失败，请稍后再试。');
-                console.error('获取评论失败:', error);
-                return;
-            }
-
+        // 渲染评论到页面
+        function displayComments(comments) {
+            const commentsContainer = document.getElementById("commentsContainer");
+            commentsContainer.innerHTML = ""; // 清空已有内容
             comments.forEach(comment => {
-                addCommentToDOM(comment.content, comment.date); // 使用正确的字段名
+                const commentElement = document.createElement("div");
+                commentElement.classList.add("user_comment");
+                commentElement.innerHTML = `
+                        <div class="user_comment_2">
+                            <div class="user_avatar">
+                                <img src="./log/logo2.png" alt="Avatar">
+                            </div>
+                            <div class="text_coment">
+                                <div class="user_id">${comment.username}</div>
+                                <span>${comment.content}</span>
+                                <span class="time">${new Date(comment.created_at).toLocaleString()}</span>
+                            </div>
+                        </div>
+                `;
+                commentsContainer.appendChild(commentElement);
             });
         }
 
-        // 添加评论的函数
-        async function addComment() {
-            const commentText = document.getElementById("coment").value;
-            if (!commentText.trim()) {
-                alert("请输入评论内容");
-                return;
-            }
+        // 提交评论
+        document.getElementById('commentForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // 阻止默认提交行为
+            const username = document.getElementById('usernameInput').value;
+            const commentContent = document.getElementById('commentInput').value;
 
-            const currentDate = new Date();
-            const formattedDate = currentDate.toLocaleDateString(); // 更灵活的日期格式
-
-            const { data, error } = await supabase
+            const { data, error } = await supabaseClient
                 .from('comments')
-                .insert([{ content: commentText, date: formattedDate }]);
+                .insert([{ content: commentContent, username: username }]);
 
             if (error) {
-                alert('插入评论失败，请稍后再试。');
-                console.error('插入评论失败:', error);
-                return;
+                console.error("Error inserting comment:", error);
+            } else {
+                document.getElementById('usernameInput').value = ''; // 清空输入框
+                document.getElementById('commentInput').value = ''; // 清空输入框
+                fetchComments(); // 重新获取评论
             }
+        });
 
-            addCommentToDOM(commentText, formattedDate);
-            document.getElementById("coment").value = ""; // 清空输入框
-        }
-
-        // 添加评论到 DOM 的函数
-        function addCommentToDOM(commentText, formattedDate) {
-            const newComment = document.createElement("div");
-            newComment.classList.add("user_comment");
-            newComment.innerHTML = `
-        <div class="user_comment_2">
-            <div class="user_avatar">
-                <img src="./log/logo2.png">
-            </div>
-            <div class="text_coment">
-                <span>${commentText}</span>
-                <span class="time">${formattedDate}</span>
-            </div>
-        </div>
-    `;
-
-            const commentSection = document.querySelector(".comment-section");
-            commentSection.insertBefore(newComment, commentSection.querySelector(".user_input"));
-        }
-
+        // 页面加载时获取评论
+        window.onload = fetchComments;
     </script>
 </body>
 
